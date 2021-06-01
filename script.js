@@ -11,23 +11,23 @@ for(var i=0; i<myImages.length; i++){
 
 function showBox(e){
     var imgSrc = e.target.src;
-    lightBoxContainer.style.display = "flex";
+    lightBoxContainer.style.transform = "scale(1)";
     lightBoxContainer.firstElementChild.style.backgroundImage = "url("+imgSrc+")";
     imgIndex = myImages.indexOf(e.target);
 }
 
 close.addEventListener("click", hidenBox);
 function hidenBox(){
-    lightBoxContainer.style.display = "none";
+    lightBoxContainer.style.transform = "scale(0)";
 }
 
 next.addEventListener("click", goNext);
-function goNext(){
-    lightBoxContainer.firstElementChild.style.backgroundImage = "url("+myImages[imgIndex].src+")";
+function goNext(){ 
     imgIndex++;
     if(imgIndex == myImages.length){
         imgIndex = 0;
     }
+    lightBoxContainer.firstElementChild.style.backgroundImage = "url("+myImages[imgIndex].src+")";
 }
 
 prev.addEventListener("click", goPrev);
@@ -39,16 +39,20 @@ function goPrev(){
     lightBoxContainer.firstElementChild.style.backgroundImage = "url("+myImages[imgIndex].src+")";
 }
 
-document.addEventListener("keydown", function(e){
-    if (e.keyCode == 39){
+document.addEventListener("keydown", addEventKeBord )
+
+function addEventKeBord (e){
+    if (e.key == "ArrowRight"){
         goNext();
     }
-    else if(e.keyCode == 27){
+    else if(e.key == "Escape"){
         hidenBox();
 
     }
-    else if(e.keyCode == 37){
+    else if(e.key == "ArrowLeft"){
         goPrev();
     }
     
-})
+
+    console.log(e)
+}

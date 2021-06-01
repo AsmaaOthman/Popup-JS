@@ -37,9 +37,19 @@ p{
     left:0;
     right:0;
     bottom:0;
-    display:none;
+    display:flex;
     justify-content:center;
-    align-items:center
+    align-items:center;
+    transform:scale(0);
+    -webkit-transform:scale(0);
+    -moz-transform:scale(0);
+    -ms-transform:scale(0);
+    -o-transform:scale(0);
+    transition: all 0.5s ease-in;
+    -webkit-transition: all 0.5s ease-in;
+    -moz-transition: all 0.5s ease-in;
+    -ms-transition: all 0.5s ease-in;
+    -o-transition: all 0.5s ease-in;
 }
 .light-box-item{
     background-image:url(../images/img1.jpg);
